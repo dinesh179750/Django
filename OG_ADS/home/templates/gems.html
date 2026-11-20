@@ -1,0 +1,43 @@
+{% extends 'main.html' %}
+{% block bg_video %}
+    {% include 'bg_video.html' with video='gems.mp4' %}
+{% endblock %}
+{% block content %}
+{%load static%}
+<section class="hero">
+  <div class="hero-text">
+    <h1>Colorful Fun in Every Bite</h1>
+    <p>Bright sugar‑coated chocolate buttons loved by kids.</p>
+    <a href="#products" class="cta-btn">Explore Gems →</a>
+  </div>
+  <div class="hero-img">
+    <img src="{% static 'images/gems.jpg' %}" alt="Cadbury Gems">
+  </div>
+</section>
+
+<section id="about" class="about">
+  <h2>About Gems</h2>
+  <p>Cadbury’s colorful chocolate buttons that bring joy to every occasion.</p>
+</section>
+
+<section id="benefits" class="benefits">
+  <h2>Why Choose Gems?</h2>
+  <ul>
+    <li>🌈 Fun, vibrant colors</li>
+    <li>🍫 Bite‑sized chocolate delight</li>
+  </ul>
+</section>
+
+<section id="products" class="products">
+  <h2>Our Products</h2>
+  <div class="product-card">Cadbury Gems Pack</div>
+  <div class="product-card">Gems Surprise</div>
+</section>
+
+<section class="testimonials">
+  <h2>What People Say</h2>
+  <blockquote>"My childhood favorite candy."</blockquote>
+  <blockquote>"Fun to share with friends."</blockquote>
+</section>
+
+{% endblock content %}

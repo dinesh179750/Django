@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+    {% load static %}
+<head>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="{% static 'stylesheets/santoor.css' %}">
+<link rel="stylesheet" href="{% static 'stylesheets/nirma.css' %}">
+<link rel="stylesheet" href="{% static 'stylesheets/gems.css' %}">
+<link rel="stylesheet" href="{% static 'stylesheets/center.css' %}">
+<link rel="stylesheet" href="{% static 'stylesheets/star.css' %}">
+    <style>
+        *{
+            margin: 0px;
+            box-sizing: border-box;
+            padding: 0px;
+        }
+        nav{
+            height: 60px;
+            box-shadow: 5px 5px 5px grey;
+            ol li:hover {
+            transform: scale(1.2);
+        }
+         ol{
+            list-style: none;
+            display: flex;
+            justify-content: space-around;
+            margin-top: 30px;
+            font-size: 1.5em;
+            font-family: "Archivo Black", sans-serif;
+        }
+        }
+        footer{
+            display: flex;
+            justify-content: space-evenly;
+            align-items: center;
+            background-color: black;
+            height: 300px;
+            color: white;
+            ol{
+                list-style: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    {% block bg_video %}
+    
+    {% endblock %}
+    {% include 'nav.html' %}
+    <!--unique code--->
+    {% block content %}
+    {% endblock content %}
+    <!--unique code end--->
+    {% include 'footer.html'%}
+</body>
+</html>

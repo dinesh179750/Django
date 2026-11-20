@@ -1,0 +1,13 @@
+{% extends 'contacts/base.html' %}
+{% block title %}Home | Contact Book 2.0{% endblock %}
+{% block content %}
+<section class="hero">
+  <div class="hero-content"><p class="eyebrow text-white-50">A BETTER WAY TO STAY CONNECTED</p><h1>Your contacts.<br><span>Your connections.</span></h1><p class="hero-copy">Keep personal and professional connections organized, and make every birthday a little harder to forget.</p><a class="btn btn-light btn-lg mt-3" href="{% url 'contact_list' %}">Explore Contact List →</a></div>
+  <div class="hero-art"><div class="hero-orbit orbit-one"></div><div class="hero-orbit orbit-two"></div><div class="hero-contact">✦<small>CONTACT<br>BOOK 2.0</small></div></div>
+</section>
+<div class="row g-3 mt-4">
+  <div class="col-md-4"><div class="feature-card"><div class="feature-icon">♧</div><h5>Organized contacts</h5><p>Keep names, phone numbers, emails and company details together.</p></div></div>
+  <div class="col-md-4"><div class="feature-card"><div class="feature-icon">🎂</div><h5>Birthday reminders</h5><p>See a live countdown and a matching birthday illustration.</p></div></div>
+  <div class="col-md-4"><div class="feature-card"><div class="feature-icon">✧</div><h5>Personal categories</h5><p>Use gold, blue or pastel styling to distinguish contact types.</p></div></div>
+</div>
+{% endblock %}

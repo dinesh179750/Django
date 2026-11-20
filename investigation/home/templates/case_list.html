@@ -1,0 +1,68 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Case List</title>
+</head>
+<body>
+
+    <a href="{% url 'case' %}">ADD CASE</a>
+
+    <h1>LIST OF CASES</h1>
+
+    <table border="2" cellpadding="10">
+
+        <tr>
+            <th>SNO</th>
+            <th>Case ID</th>
+            <th>Case TYPE</th>
+            <th>EDIT</th>
+            <th>DELETE</th>
+        </tr>
+
+        {% for i in data %}
+
+        <tr>
+            <td>{{ forloop.counter }}</td>
+
+            <td>
+                <a href="{% url 'single' i.case_id %}">
+                    {{ i.case_id }}
+                </a>
+            </td>
+
+            <td>{{ i.case_type }}</td>
+
+            <td>
+                <a href="{% url 'update' i.pk %}">
+                    <button type="button">EDIT</button>
+                </a>
+            </td>
+
+            <td>
+                <a href="{% url 'del' i.pk %}"
+                   onclick="return confirm('Are you sure you want to delete this case?')">
+
+                    <button type="button"
+                            style="background-color:red; color:white;">
+                        DELETE
+                    </button>
+
+                </a>
+            </td>
+
+        </tr>
+
+        {% empty %}
+
+        <tr>
+            <td colspan="5">No cases available</td>
+        </tr>
+
+        {% endfor %}
+
+    </table>
+
+</body>
+</html>

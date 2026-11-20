@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <a href="{% url 'home' %}">HOME</a>
+    <a href="{% url 'std' %}">STUDENT</a>
+    <a href="{% url 'sap' %}">BOOK_STORE</a>
+    <h1>THIS IS A LIST OF BOOKS</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>S.No</th>
+                <th>Book Name</th>
+                <th>Total Chapters</th>
+                <th>Price</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1</td>
+                <td>To Kill a Mockingbird</td>
+                <td>31</td>
+                <td>14.99</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>1984</td>
+                <td>24</td>
+                <td>12.50</td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>The Great Gatsby</td>
+                <td>9</td>
+                <td>10.99</td>
+            </tr>
+            <tr>
+                <td>4</td>
+                <td>The Hobbit</td>
+                <td>19</td>
+                <td>15.00</td>
+            </tr>
+            <tr>
+                <td>5</td>
+                <td>Harry Potter and the Sorcerer's Stone</td>
+                <td>17</td>
+                <td>24.99</td>
+            </tr>
+            <tr>
+                <td>6</td>
+                <td>The Catcher in the Rye</td>
+                <td>26</td>
+                <td>11.99</td>
+            </tr>
+            <tr>
+                <td>7</td>
+                <td>Pride and Prejudice</td>
+                <td>61</td>
+                <td>9.99</td>
+            </tr>
+            <tr>
+                <td>8</td>
+                <td>The Lord of the Rings</td>
+                <td>62</td>
+                <td>35.00</td>
+            </tr>
+            <tr>
+                <td>9</td>
+                <td>Animal Farm</td>
+                <td>10</td>
+                <td>$8.99</td>
+            </tr>
+            <tr>
+                <td>10</td>
+                <td>Brave New World</td>
+                <td>18</td>
+                <td>$13.40</td>
+            </tr>
+        </tbody>
+    </table>
+    <hr>
+    <table border="2px solid black ">
+    {% for book in books %}
+    <tr>
+    <td>{{forloop.counter}}</td>
+    <td>{{book.name}}</td>
+    <td>{{book.chapters}}</td>
+    <td>{{book.amount}}</td>
+</tr>
+    {%endfor%} 
+</table>
+</body>
+</html>

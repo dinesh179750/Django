@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .boy{
+            height: 100px;
+            width: 300px;
+            color: white;
+            background-color: blue;
+        }
+        .girls{
+            height: 100px;
+            width: 300px;
+            color: black;
+            background-color: pink;
+        }
+    </style>
+</head>
+<body>
+    <a href="{% url 'home' %}">HOME</a>
+    <a href="{% url 'std' %}">STUDENTS</a>
+    <a href="{% url 'sap' %}">BOOK_STORE</a>
+    {% for i in data %}
+    {% if i.gender == 'male' %}
+    <div class="boy">
+        <p>{{ i.name }}</p>
+
+    </div>
+    {% else %}
+    <div class="girls">
+        <p>{{ i.name }}</p>
+    </div>
+    {% endif %}
+    {% endfor %}
+</body>
+</html>

@@ -1,0 +1,57 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Products</title>
+</head>
+
+<body>
+
+    <h1>Add Crackers</h1>
+
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+
+        {{ crackers_form.as_p }}
+
+        <button type="submit" name="add_crackers">
+            Add Crackers
+        </button>
+    </form>
+
+    <hr>
+
+    <h1>Add Sweets</h1>
+
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+
+        {{ sweets_form.as_p }}
+
+        <button type="submit" name="add_sweets">
+            Add Sweets
+        </button>
+    </form>
+
+    <hr>
+
+    <h1>Add Gifts</h1>
+
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+
+        {{ gifts_form.as_p }}
+
+        <button type="submit" name="add_gifts">
+            Add Gifts
+        </button>
+    </form>
+
+    <hr>
+
+    <a href="{% url 'home' %}">View All Products</a>
+
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Single Case</title>
+</head>
+<body>
+
+    <h2>HELLO</h2>
+
+    <h1>CASE ID : {{data1.case_id}}</h1>
+
+    <h2>DESCRIPTION : <p>{{data1.case_description}}</p></h2>
+
+    <h3>CASE TYPE : <i style="color: red;">
+        {{data1.case_type}}
+    </i></h3>
+
+    <h3>CASE LOCATION : {{data1.loc}}</h3>
+
+    <h3>COMPLAINT NAME : {{data1.complaint_name}}</h3>
+
+    <h3>ASSIGNED AGENT :
+        <u style="color: blue; text-decoration: underline;">
+            {{data1.assigned_agent}}
+        </u>
+    </h3>
+
+    <h3>CASE STATUS : {{data1.case_status}}</h3>
+
+    <a href="{% url 'update' data1.case_id %}">
+        <button>EDIT</button>
+    </a>
+
+    <a href="{% url 'del' data1.case_id %}">
+        <button style="background-color: red; color: white;">
+            DELETE
+        </button>
+    </a>
+
+</body>
+</html>

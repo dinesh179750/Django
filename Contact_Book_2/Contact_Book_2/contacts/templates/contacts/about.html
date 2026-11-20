@@ -1,0 +1,183 @@
+
+{% extends 'contacts/base.html' %}
+{% load static %}
+
+{% block title %}About | Contact Book 2.0{% endblock %}
+
+{% block content %}
+
+<div class="about-wrap">
+
+    <!-- ABOUT HEADER -->
+    <p class="eyebrow">ABOUT THIS PROJECT</p>
+
+    <h1 class="page-title">
+        Simple connections.<br>
+        Thoughtful reminders.
+    </h1>
+
+    <p class="lead text-secondary mt-3">
+        Contact Book 2.0 is a contact management web application
+        built to organize personal and professional contacts and
+        make upcoming birthdays visible through a dynamic countdown.
+    </p>
+
+
+    <!-- TEAM MEMBERS SECTION -->
+    <div class="team-section mt-5">
+
+        <div class="text-center mb-4">
+            <p class="eyebrow">MEET OUR TEAM</p>
+            <h2 class="page-title">The People Behind Contact Book 2.0</h2>
+            <p class="text-secondary">
+                Meet the team behind this project.
+            </p>
+        </div>
+
+        <div class="row g-4">
+
+            <!-- RAMA NAIDU -->
+            <div class="col-12 col-md-6 col-lg-4">
+                <div class="team-card rama-card">
+
+                    <div class="team-photo-container">
+                        <img
+                            src="{% static 'images/birthdays/team/rama_naidu.jpeg' %}"
+                            alt="Rama Naidu"
+                            class="team-photo"
+                        >
+                    </div>
+
+                    <div class="team-info">
+                        <p class="team-number">01 | PROJECT LEAD</p>
+
+                        <h3>Rama Naidu</h3>
+
+                        <span class="team-role">
+                            Project Lead / DeveloperTeam Member
+                        </span>
+
+                        <div class="team-details">
+                            <p>
+                                <strong>Education:</strong><br>
+                                B.Tech – Computer Science and Engineering (AI &amp; ML)
+                            </p>
+
+                            <p>
+                                <strong>College:</strong><br>
+                                Vaagdevi College of Engineering, Warangal
+                            </p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+
+            <!-- ABHIRAM MANCHIKA -->
+            <div class="col-12 col-md-6 col-lg-4">
+                <div class="team-card abhiram-card">
+
+                    <div class="team-photo-container">
+                        <img
+                            src="{% static 'images/birthdays/team/abhiram.jpeg' %}"
+                            alt="Abhiram Manchika"
+                            class="team-photo"
+                        >
+                    </div>
+
+                    <div class="team-info">
+                        <p class="team-number">02 | TEAM MEMBER</p>
+
+                        <h3>Abhiram Manchika</h3>
+
+                        <span class="team-role">
+                            Team Member
+                        </span>
+
+                        <div class="team-details">
+                            <p>
+                                <strong>Education:</strong><br>
+                                B.Tech – Computer Science and Engineering (AI &amp; ML)
+                            </p>
+
+                            <p>
+                                <strong>College:</strong><br>
+                                Vaagdevi College of Engineering, Warangal
+                            </p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+
+            <!-- DINESH -->
+            <div class="col-12 col-md-6 col-lg-4">
+                <div class="team-card dinesh-card">
+
+                    <div class="team-photo-container">
+                        <img
+                            src="{% static 'images/birthdays/team/dinesh.jpeg' %}"
+                            alt="Dinesh"
+                            class="team-photo"
+                        >
+                    </div>
+
+                    <div class="team-info">
+                        <p class="team-number">03 | TEAM MEMBER</p>
+
+                        <h3>Dinesh</h3>
+
+                        <span class="team-role">
+                            Team Member
+                        </span>
+
+                        <div class="team-details">
+                            <p>
+                                <strong>Education:</strong><br>
+                                B.Tech – Computer Science and Engineering (AI &amp; ML)
+                            </p>
+
+                            <p>
+                                <strong>College:</strong><br>
+                                Vaagdevi College of Engineering, Warangal
+                            </p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+    <!-- PROJECT INFORMATION -->
+    <div class="project-info mt-5">
+
+        <h4>Contact Book 2.0</h4>
+
+        <p class="text-secondary mb-3">
+            A Django-powered application featuring contact creation,
+            search, detailed profiles, editing, deletion, category-based
+            themes and birthday image reminders.
+        </p>
+
+        <h5 class="mt-4 mb-3">Technologies Used</h5>
+
+        <div class="d-flex flex-wrap gap-2">
+            <span class="tech-chip">Python</span>
+            <span class="tech-chip">Django</span>
+            <span class="tech-chip">SQLite</span>
+            <span class="tech-chip">Bootstrap 5</span>
+            <span class="tech-chip">HTML</span>
+            <span class="tech-chip">CSS</span>
+            <span class="tech-chip">JavaScript</span>
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

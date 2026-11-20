@@ -1,0 +1,44 @@
+{% extends 'main.html' %}
+{% block bg_video %}
+    {% include 'bg_video.html' with video='center.mp4' %}
+{% endblock %}
+{% block content %}
+{%load static%}
+<section class="hero">
+  <div class="hero-text">
+    <h1>Burst of Fruity Flavor</h1>
+    <p>Chewing gum with a liquid‑filled center.</p>
+    <a href="#products" class="cta-btn">Try Center Fruit →</a>
+  </div>
+  <div class="hero-img">
+    <img src="{% static 'images/centerfruit.jpg' %}" alt="Center Fruit Gum">
+  </div>
+</section>
+
+<section id="about" class="about">
+  <h2>About Center Fruit</h2>
+  <p>Known for its juicy burst of flavor, Center Fruit is India’s favorite gum.</p>
+</section>
+
+<section id="benefits" class="benefits">
+  <h2>Why Choose Center Fruit?</h2>
+  <ul>
+    <li>🍓 Liquid‑filled fruity center</li>
+    <li>😋 Long‑lasting taste</li>
+  </ul>
+</section>
+
+<section id="products" class="products">
+  <h2>Our Products</h2>
+  <div class="product-card">Center Fruit Strawberry</div>
+  <div class="product-card">Center Fruit Mango</div>
+  <div class="product-card">Center Fruit Mix Fruit</div>
+</section>
+
+<section class="testimonials">
+  <h2>What People Say</h2>
+  <blockquote>"Love the juicy burst when I chew."</blockquote>
+  <blockquote>"Best fruity gum ever!"</blockquote>
+</section>
+
+{% endblock content %}

@@ -1,0 +1,22 @@
+{# container.html - card 1: selected song (image + name + details), card 2: similar songs (ordered list) #}
+<section class="panel container-panel" id="container-section" aria-label="Selected song and similar songs">
+  <article class="card card-now" id="now-card">
+    <img class="cover" id="now-img" src="" alt="" width="150" height="150">
+    <div class="now-text">
+      <p class="eyebrow" id="now-eyebrow">Selected song</p>
+      <h2 class="song-name" id="now-title">-</h2>
+      <ul class="chips" id="now-details" aria-label="Song details"></ul>
+      <div class="now-actions">
+        <button type="button" class="btn" id="now-play">Play</button>
+        <button type="button" class="btn btn-ghost" id="now-fav" aria-pressed="false">
+          <span class="heart" aria-hidden="true">&#9825;</span> <span id="now-fav-label">Favourite</span>
+        </button>
+      </div>
+    </div>
+  </article>
+
+  <article class="card card-similar" aria-labelledby="similar-title">
+    <h3 class="card-title" id="similar-title">Similar songs</h3>
+    <ol class="similar-list" id="similar-list"></ol>
+  </article>
+</section>

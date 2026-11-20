@@ -1,0 +1,44 @@
+{% extends 'main.html' %}
+{% block bg_video %}
+    {% include 'bg_video.html' with video='glucon-d.mp4' %}
+{% endblock %}
+{% block content %}
+{%load static%}
+<section class="hero">
+  <div class="hero-text">
+    <h1>Instant Energy Anytime</h1>
+    <p>Quick hydration and glucose boost.</p>
+    <a href="#products" class="cta-btn">Stay Energized →</a>
+  </div>
+  <div class="hero-img">
+    <img src="{% static 'images/glocond2.jpg' %}" alt="Glucon-D Drink">
+  </div>
+</section>
+
+<section id="about" class="about">
+  <h2>About Glucon‑D</h2>
+  <p>Energy drink powder trusted for decades to restore energy instantly.</p>
+</section>
+
+<section id="benefits" class="benefits">
+  <h2>Why Choose Glucon‑D?</h2>
+  <ul>
+    <li>⚡ Quick absorption for instant energy</li>
+    <li>💧 Helps maintain hydration in hot weather</li>
+  </ul>
+</section>
+
+<section id="products" class="products">
+  <h2>Our Products</h2>
+  <div class="product-card">Glucon‑D Regular</div>
+  <div class="product-card">Glucon‑D Tangy Orange</div>
+  <div class="product-card">Glucon‑D Lemon</div>
+</section>
+
+<section class="testimonials">
+  <h2>What People Say</h2>
+  <blockquote>"My summer essential for energy."</blockquote>
+  <blockquote>"Keeps me refreshed during long days."</blockquote>
+</section>
+
+{% endblock content %}

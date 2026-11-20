@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>My Cart</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        body {
+            background-color: #f5f5f5;
+            font-family: Arial, sans-serif;
+        }
+
+        .navbar {
+            background-color: crimson;
+        }
+
+        .navbar-brand {
+            color: white;
+            font-size: 25px;
+            font-weight: bold;
+        }
+
+        .cart-container {
+            background-color: white;
+            padding: 25px;
+            margin-top: 30px;
+            border-radius: 12px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+
+        .cart-title {
+            color: crimson;
+            font-weight: bold;
+        }
+
+        .table th {
+            background-color: crimson;
+            color: white;
+        }
+
+        .quantity-btn {
+            width: 32px;
+            height: 32px;
+            border: none;
+            background-color: crimson;
+            color: white;
+            border-radius: 5px;
+        }
+
+        .total {
+            color: crimson;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .empty-cart {
+            text-align: center;
+            padding: 50px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg">
+        <div class="container-fluid">
+
+            <a class="navbar-brand" href="{% url 'home' %}">
+                My Shopping Cart
+            </a>
+
+            <a href="{% url 'home' %}" class="btn btn-light">
+             Continue Shopping
+            </a>
+
+        </div>
+    </nav>
+
+
+    <div class="container">
+
+        <div class="cart-container">
+
+            <h2 class="cart-title mb-4">
+                 My Shopping Cart
+            </h2>
+
+            {% if cart_items %}
+
+            <div class="table-responsive">
+
+                <table class="table table-bordered text-center align-middle">
+
+                    <thead>
+                        <tr>
+                            <th>S.No</th>
+                            <th>Product Name</th>
+                            <th>Category</th>
+                            <th>Price</th>
+                            <th>Quantity</th>
+                            <th>Total</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+
+                        {% for item in cart_items %}
+
+                        <tr>
+
+                            <td>{{ forloop.counter }}</td>
+
+                            <td>{{ item.name }}</td>
+
+                            <td>{{ item.type|title }}</td>
+
+                            <td>₹{{ item.price }}</td>
+
+                            <td>
+
+                                <form method="POST" action="{% url 'update_cart' item.key %}">
+                                    {% csrf_token %}
+
+                                    <button type="submit"
+                                            name="action"
+                                            value="decrease"
+                                            class="quantity-btn">
+                                        -
+                                    </button>
+
+                                    <span class="mx-2">
+                                        {{ item.quantity }}
+                                    </span>
+
+                                    <button type="submit"
+                                            name="action"
+                                            value="increase"
+                                            class="quantity-btn">
+                                        +
+                                    </button>
+
+                                </form>
+
+                            </td>
+
+                            <td>
+                                ₹{{ item.total }}
+                            </td>
+
+                            <td>
+
+                                <form method="POST" action="{% url 'remove_from_cart' item.key %}">
+                                    {% csrf_token %}
+
+                                    <button type="submit"
+                                            class="btn btn-danger btn-sm">
+                                        Remove
+                                    </button>
+
+                                </form>
+
+                            </td>
+
+                        </tr>
+
+                        {% endfor %}
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+
+            <div class="text-end mt-4">
+
+                <h4 class="total">
+                    Grand Total: ₹{{ grand_total }}
+                </h4>
+
+                <button class="btn btn-success btn-lg mt-3">
+                    Place Order
+                </button>
+
+            </div>
+
+            {% else %}
+
+            <div class="empty-cart">
+
+                <h3>Your Cart is Empty!</h3>
+
+                <p class="text-muted">
+                    You haven't added any products yet.
+                </p>
+
+                <a href="{% url 'home' %}" class="btn btn-danger mt-3">
+                    Shop Now
+                </a>
+
+            </div>
+
+            {% endif %}
+
+        </div>
+
+    </div>
+
+</body>
+</html>

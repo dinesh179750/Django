@@ -1,0 +1,30 @@
+{% extends 'contacts/base.html' %}
+{% load static %}
+{% block title %}{{ contact.full_name }} | Contact Book 2.0{% endblock %}
+{% block content %}
+<a href="{% url 'contact_list' %}" class="back-link">← Back to contact list</a>
+<div class="profile-panel flag-panel-{{ contact.flag }} mt-3">
+  <div class="d-flex flex-column flex-md-row justify-content-between gap-3 align-items-md-start">
+    <div class="d-flex align-items-center gap-3"><div class="profile-avatar">{{ contact.first_name|first|upper }}</div><div><span class="category-pill">{{ contact.get_flag_display }}</span><h1 class="profile-name mt-2">{{ contact.full_name }}</h1><p class="mb-0 opacity-75">{{ contact.phone }}</p></div></div>
+    <div class="d-flex gap-2"><a class="btn btn-light" href="{% url 'contact_update' contact.pk %}">✎ Edit</a><a class="btn btn-outline-dark" href="{% url 'contact_delete' contact.pk %}">Delete</a></div>
+  </div>
+  <div class="row g-3 mt-3">
+    <div class="col-12 col-md-6"><div class="detail-tile"><span>Date of birth</span><strong>{{ contact.date_of_birth|date:"d F Y" }}</strong></div></div>
+    <div class="col-12 col-md-6"><div class="detail-tile"><span>Email</span><strong>{{ contact.email|default:"Not provided" }}</strong></div></div>
+    <div class="col-12 col-md-6"><div class="detail-tile"><span>Company</span><strong>{{ contact.company|default:"Not provided" }}</strong></div></div>
+    <div class="col-12 col-md-6"><div class="detail-tile"><span>Company email</span><strong>{{ contact.company_email|default:"Not provided" }}</strong></div></div>
+  </div>
+</div>
+<section class="birthday-panel mt-4">
+  <div class="row align-items-center g-4">
+    <div class="col-12 col-md-5 text-center"><img class="birthday-art" src="{% static birthday_art.image %}" alt="{{ birthday_art.title }}"></div>
+    <div class="col-12 col-md-7">
+      <p class="eyebrow mb-1">BIRTHDAY COUNTDOWN</p><h2 class="page-title">{{ birthday_art.title }}</h2>
+      <div class="countdown-number">{{ days_remaining }} <span>days</span></div>
+      <p class="text-secondary">{{ birthday_art.message }}</p>
+      <p class="mb-0"><strong>Next birthday:</strong> {{ birthday|date:"d F Y" }}</p>
+      {% if days_remaining == 0 %}<span class="badge text-bg-success mt-3">Today is the birthday! 🎉</span>{% endif %}
+    </div>
+  </div>
+</section>
+{% endblock %}

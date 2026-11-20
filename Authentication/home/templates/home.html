@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <a href="{% url 'log' %}">LOGOUT</a>
+    <h1>h1 <p>{{request.user}}</p></h1>
+    <form action="" method="post">
+        {% csrf_token %}
+        {{form.as_p}}
+        <button type="submit">Add TASK</button>
+    </form>
+    <a href="{% url 'display' %}"></a>
+</body>
+</html>

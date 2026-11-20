@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping Cart</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        body {
+            background-color: #f5f5f5;
+            font-family: Arial, sans-serif;
+        }
+
+        .navbar {
+            background-color: crimson;
+        }
+
+        .navbar-brand {
+            color: white;
+            font-weight: bold;
+            font-size: 25px;
+        }
+
+        .navbar-brand:hover {
+            color: white;
+        }
+
+        .cart-link {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 18px;
+            padding: 8px 15px;
+            border: 1px solid white;
+            border-radius: 8px;
+        }
+
+        .cart-link:hover {
+            background-color: white;
+            color: crimson;
+        }
+
+        .sidebar {
+            background-color: white;
+            min-height: 85vh;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .nav-pills .nav-link {
+            color: brown;
+            font-weight: bold;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 10px;
+            text-align: left;
+        }
+
+        .nav-pills .nav-link.active {
+            background-color: crimson;
+            color: white;
+        }
+
+        .nav-pills .nav-link:hover {
+            background-color: coral;
+            color: white;
+        }
+
+        .product-card {
+            background-color: white;
+            border-radius: 12px;
+            padding: 15px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            text-align: center;
+            height: 100%;
+            transition: 0.3s;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .product-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+
+        .product-card h5 {
+            color: brown;
+            margin-top: 12px;
+            font-weight: bold;
+        }
+
+        .price {
+            color: crimson;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .category-title {
+            color: crimson;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        .add-cart-btn {
+            background-color: crimson;
+            border: none;
+            padding: 10px;
+            font-weight: bold;
+            border-radius: 8px;
+            color: white;
+        }
+
+        .add-cart-btn:hover {
+            background-color: darkred;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg">
+        <div class="container-fluid">
+
+            <a class="navbar-brand" href="{% url 'home' %}">
+                My Shopping Cart
+            </a>
+
+            <a href="{% url 'cart' %}" class="cart-link">
+                🛒 View Cart
+            </a>
+
+        </div>
+    </nav>
+
+
+    <div class="container-fluid mt-4">
+
+        <div class="row">
+
+            <!-- Sidebar -->
+            <div class="col-12 col-md-2 mb-3">
+
+                <div class="sidebar">
+
+                    <h5 class="mb-4 text-center">Categories</h5>
+
+                    <ul class="nav nav-pills flex-column"
+                        id="productTabs"
+                        role="tablist">
+
+                        <li class="nav-item">
+                            <button class="nav-link active w-100"
+                                    data-bs-toggle="pill"
+                                    data-bs-target="#all"
+                                    type="button">
+                                All Products
+                            </button>
+                        </li>
+
+                        <li class="nav-item">
+                            <button class="nav-link w-100"
+                                    data-bs-toggle="pill"
+                                    data-bs-target="#crackers"
+                                    type="button">
+                                Crackers
+                            </button>
+                        </li>
+
+                        <li class="nav-item">
+                            <button class="nav-link w-100"
+                                    data-bs-toggle="pill"
+                                    data-bs-target="#sweets"
+                                    type="button">
+                                Sweets
+                            </button>
+                        </li>
+
+                        <li class="nav-item">
+                            <button class="nav-link w-100"
+                                    data-bs-toggle="pill"
+                                    data-bs-target="#gifts"
+                                    type="button">
+                                Gifts
+                            </button>
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
+
+
+            <!-- Products -->
+            <div class="col-12 col-md-10">
+
+                <div class="tab-content" id="productTabsContent">
+
+
+                    <!-- ALL PRODUCTS -->
+                    <div class="tab-pane fade show active" id="all">
+
+                        <h2 class="category-title">All Products</h2>
+
+                        <!-- Crackers -->
+                        <h4 class="mb-3">Crackers</h4>
+
+                        <div class="row g-4 mb-5">
+
+                            {% for i in data %}
+
+                            <div class="col-12 col-sm-6 col-lg-4 col-xl-3">
+
+                                <div class="product-card">
+
+                                    {% if i.image %}
+                                    <img src="{{ i.image.url }}" alt="{{ i.cracker_name }}">
+                                    {% endif %}
+
+                                    <h5>{{ i.cracker_name }}</h5>
+
+                                    <p class="price">₹{{ i.price }}</p>
+
+                                    <p>Quantity: {{ i.Quantity }}</p>
+
+                                    <p>Age Range: {{ i.Age_range }}</p>
+
+                                    <form method="POST" action="{% url 'add_to_cart' i.id %}">
+                                        {% csrf_token %}
+                                        <button type="submit" class="btn add-cart-btn w-100 mt-2">
+                                            🛒 Add to Cart
+                                        </button>
+                                    </form>
+
+                                </div>
+                            </div>
+
+                            {% empty %}
+                            <p>No crackers available.</p>
+                            {% endfor %}
+
+                        </div>
+
+
+                        <!-- Sweets -->
+                        <h4 class="mb-3">Sweets</h4>
+
+                        <div class="row g-4 mb-5">
+
+                            {% for i in data2 %}
+
+                            <div class="col-12 col-sm-6 col-lg-4 col-xl-3">
+
+                                <div class="product-card">
+
+                                    {% if i.image %}
+                                    <img src="{{ i.image.url }}" alt="{{ i.Sweet_name }}">
+                                    {% endif %}
+
+                                    <h5>{{ i.Sweet_name }}</h5>
+
+                                    <p class="price">₹{{ i.price }}</p>
+
+                                    <p>Quantity: {{ i.Quantity }}</p>
+
+                                    <form method="POST" action="{% url 'add_to_cart' i.id %}">
+                                        {% csrf_token %}
+                                        <button type="submit" class="btn add-cart-btn w-100 mt-2">
+                                            🛒 Add to Cart
+                                        </button>
+                                    </form>
+
+                                </div>
+                            </div>
+
+                            {% empty %}
+                            <p>No sweets available.</p>
+                            {% endfor %}
+
+                        </div>
+
+
+                        <!-- Gifts -->
+                        <h4 class="mb-3">Gifts</h4>
+
+                        <div class="row g-4 mb-5">
+
+                            {% for i in data3 %}
+
+                            <div class="col-12 col-sm-6 col-lg-4 col-xl-3">
+
+                                <div class="product-card">
+
+                                    {% if i.image %}
+                                    <img src="{{ i.image.url }}" alt="{{ i.Gift_name }}">
+                                    {% endif %}
+
+                                    <h5>{{ i.Gift_name }}</h5>
+
+                                    <p class="price">₹{{ i.price }}</p>
+
+                                    <p>Quantity: {{ i.Quantity }}</p>
+
+                                    <form method="POST" action="{% url 'add_to_cart' i.id %}">
+                                        {% csrf_token %}
+                                        <button type="submit" class="btn add-cart-btn w-100 mt-2">
+                                            🛒 Add to Cart
+                                        </button>
+                                    </form>
+
+                                </div>
+                            </div>
+
+                            {% empty %}
+                            <p>No gifts available.</p>
+                            {% endfor %}
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- CRACKERS -->
+                    <div class="tab-pane fade" id="crackers">
+
+                        <h2 class="category-title">Crackers</h2>
+
+                        <div class="row g-4">
+
+                            {% for i in data %}
+
+                            <div class="col-12 col-sm-6 col-lg-4 col-xl-3">
+
+                                <div class="product-card">
+
+                                    {% if i.image %}
+                                    <img src="{{ i.image.url }}" alt="{{ i.cracker_name }}">
+                                    {% endif %}
+
+                                    <h5>{{ i.cracker_name }}</h5>
+
+                                    <p class="price">₹{{ i.price }}</p>
+
+                                    <p>Quantity: {{ i.Quantity }}</p>
+
+                                    <p>Age Range: {{ i.Age_range }}</p>
+
+                                    <form method="POST" action="{% url 'add_to_cart' i.id %}">
+                                        {% csrf_token %}
+                                        <button type="submit" class="btn add-cart-btn w-100 mt-2">
+                                            🛒 Add to Cart
+                                        </button>
+                                    </form>
+
+                                </div>
+                            </div>
+
+                            {% empty %}
+                            <p>No crackers available.</p>
+                            {% endfor %}
+
+                        </div>
+                    </div>
+
+
+                    <!-- SWEETS -->
+                    <div class="tab-pane fade" id="sweets">
+
+                        <h2 class="category-title">Sweets</h2>
+
+                        <div class="row g-4">
+
+                            {% for i in data2 %}
+
+                            <div class="col-12 col-sm-6 col-lg-4 col-xl-3">
+
+                                <div class="product-card">
+
+                                    {% if i.image %}
+                                    <img src="{{ i.image.url }}" alt="{{ i.Sweet_name }}">
+                                    {% endif %}
+
+                                    <h5>{{ i.Sweet_name }}</h5>
+
+                                    <p class="price">₹{{ i.price }}</p>
+
+                                    <p>Quantity: {{ i.Quantity }}</p>
+
+                                    <form method="POST" action="{% url 'add_to_cart' i.id %}">
+                                        {% csrf_token %}
+                                        <button type="submit" class="btn add-cart-btn w-100 mt-2">
+                                            🛒 Add to Cart
+                                        </button>
+                                    </form>
+
+                                </div>
+                            </div>
+
+                            {% empty %}
+                            <p>No sweets available.</p>
+                            {% endfor %}
+
+                        </div>
+                    </div>
+
+
+                    <!-- GIFTS -->
+                    <div class="tab-pane fade" id="gifts">
+
+                        <h2 class="category-title">Gifts</h2>
+
+                        <div class="row g-4">
+
+                            {% for i in data3 %}
+
+                            <div class="col-12 col-sm-6 col-lg-4 col-xl-3">
+
+                                <div class="product-card">
+
+                                    {% if i.image %}
+                                    <img src="{{ i.image.url }}" alt="{{ i.Gift_name }}">
+                                    {% endif %}
+
+                                    <h5>{{ i.Gift_name }}</h5>
+
+                                    <p class="price">₹{{ i.price }}</p>
+
+                                    <p>Quantity: {{ i.Quantity }}</p>
+
+                                    <form method="POST" action="{% url 'add_to_cart' i.id %}">
+                                        {% csrf_token %}
+                                        <button type="submit" class="btn add-cart-btn w-100 mt-2">
+                                            🛒 Add to Cart
+                                        </button>
+                                    </form>
+
+                                </div>
+                            </div>
+
+                            {% empty %}
+                            <p>No gifts available.</p>
+                            {% endfor %}
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .row1{
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            justify-content: space-evenly;
+            flex-wrap: wrap;
+        }
+        .book1{
+            display: flex;
+            border: 5px solid brown;
+            width: 280px;
+        }
+        .left{
+            height: 400px;
+            width: 140px;
+            border: 1px solid black;
+            background-color: blanchedalmond;
+        }
+        .right{
+            height: 400px;
+            width: 140px;
+            border: 1px solid black;
+            background-color: blanchedalmond;
+        }
+    </style>
+</head>
+<body>
+    <a href="{% url 'home' %}">HOME</a>
+    <a href="{% url 'std' %}">STUDENT</a>
+    <a href="{% url 'sap' %}">BOOK_STORE</a>
+   <div class="row1">
+    {% for i in sap %}
+    <div class="book1">
+        <div class="left">
+            <p>{{i.id}}</p>
+            <p>{{i.bookname}}</p>
+            <p>{{i.author}}</p>
+            <p>{{i.price}}</p>
+        </div>
+        <div class="right">
+            <p>{{i.category }}</p>
+            <p>{{i.total_chapters }}</p>
+            <p>{{i.books_in_store }}</p>
+            <p>{{i.description}}</p>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+</body>
+</html>

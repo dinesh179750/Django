@@ -1,0 +1,44 @@
+{% extends 'main.html' %}
+{% block bg_video %}
+    {% include 'bg_video.html' with video='nirma.mp4' %}
+{% endblock %}
+{% block content %}
+{%load static%}
+<section class="hero">
+  <div class="hero-text">
+    <h1>Washing Made Affordable</h1>
+    <p>Trusted detergent for millions of households.</p>
+    <a href="#products" class="cta-btn">Shop Nirma →</a>
+  </div>
+  <div class="hero-img">
+    <img src="{% static 'images/nirma.jpg' %}" alt="Nirma Detergent">
+  </div>
+</section>
+
+<section id="about" class="about">
+  <h2>About Nirma</h2>
+  <p>Iconic Indian detergent brand known for affordability and its catchy jingle.</p>
+</section>
+
+<section id="benefits" class="benefits">
+  <h2>Why Choose Nirma?</h2>
+  <ul>
+    <li>🧼 Effective cleaning at low cost</li>
+    <li>🌍 Widely available across India</li>
+  </ul>
+</section>
+
+<section id="products" class="products">
+  <h2>Our Products</h2>
+  <div class="product-card">Nirma Washing Powder</div>
+  <div class="product-card">Nirma Detergent Cake</div>
+  <div class="product-card">Nirma Bath Soap</div>
+</section>
+
+<section class="testimonials">
+  <h2>What People Say</h2>
+  <blockquote>"Best value for money detergent."</blockquote>
+  <blockquote>"Cleans clothes without burning a hole in the pocket."</blockquote>
+</section>
+
+{% endblock content %}

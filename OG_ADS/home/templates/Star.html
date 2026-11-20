@@ -1,0 +1,44 @@
+{% extends 'main.html' %}
+{% block bg_video %}
+    {% include 'bg_video.html' with video='video/name.mp4' %}
+{% endblock %}
+{% block content %}
+{%load static%}
+<section class="hero">
+  <div class="hero-text">
+    <h1>Indulge in the Chewy Delight</h1>
+    <p>Caramel, nougat, and chocolate in every bite.</p>
+    <a href="#products" class="cta-btn">Taste the Magic →</a>
+  </div>
+  <div class="hero-img">
+    <img src="{% static 'images/star.jpg' %}" alt="5 Star Chocolate">
+  </div>
+</section>
+
+<section id="about" class="about">
+  <h2>About 5 Star</h2>
+  <p>Cadbury’s iconic chocolate bar loved for its gooey texture and rich taste.</p>
+</section>
+
+<section id="benefits" class="benefits">
+  <h2>Why Choose 5 Star?</h2>
+  <ul>
+    <li>🍫 Rich chocolate coating</li>
+    <li>🍯 Soft, chewy caramel center</li>
+  </ul>
+</section>
+
+<section id="products" class="products">
+  <h2>Our Products</h2>
+  <div class="product-card">5 Star Classic</div>
+  <div class="product-card">5 Star 3D</div>
+  <div class="product-card">5 Star Crunchy</div>
+</section>
+
+<section class="testimonials">
+  <h2>What People Say</h2>
+  <blockquote>"My go‑to comfort chocolate."</blockquote>
+  <blockquote>"Chewy, chocolaty, and irresistible."</blockquote>
+</section>
+
+{% endblock content %}

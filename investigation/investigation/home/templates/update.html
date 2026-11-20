@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Update Case</title>
+</head>
+<body>
+
+    <h1>UPDATE HERE</h1>
+
+    <form action="" method="POST">
+
+        {% csrf_token %}
+
+        <label>CASE ID</label>
+        <input type="number" disabled value="{{data2.case_id}}">
+        <br><br>
+
+        <label>CASE TYPE</label>
+
+        <select name="type">
+
+            <option
+                style="color: yellow; background-color: rgba(239, 17, 17, 0.823);"
+                value="{{data2.case_type}}">
+                {{data2.case_type}}
+            </option>
+
+            <option value="CRIME">CRIME</option>
+            <option value="ROBBERY">ROBBERY</option>
+            <option value="POCSO">POCSO</option>
+            <option value="SUICIDE">SUICIDE</option>
+            <option value="KIDNAP">KIDNAP</option>
+
+        </select>
+
+        <br><br>
+
+        <label>Address</label>
+        <input type="text" value="{{data2.loc}}" name="address">
+        <br><br>
+
+        <label>Complaint Name</label>
+        <input type="text" value="{{data2.complaint_name}}" name="cname">
+        <br><br>
+
+        <label>ASSIGNED AGENT</label>
+        <input type="text" disabled value="{{data2.assigned_agent}}">
+        <br><br>
+
+        <label>STATUS</label>
+
+        <select name="status">
+
+            <option
+                style="background: blue; color: whitesmoke;"
+                value="{{data2.case_status}}">
+                {{data2.case_status}}
+            </option>
+
+            <option value="Not Assigned">Not Assigned</option>
+            <option value="pending">PENDING</option>
+            <option value="Completed">Completed</option>
+
+        </select>
+
+        <br><br>
+
+        <label>DESCRIPTION</label>
+        <input type="text" value="{{data2.desc}}" name="desc">
+        <br><br>
+
+        <button type="submit">UPDATE CASE</button>
+
+    </form>
+
+</body>
+</html>

@@ -1,0 +1,23 @@
+{# video.html - section 1: video of the current song, section 2: information about the song #}
+<section class="panel video-panel" id="video-section" aria-label="Now playing video">
+  <div class="video-wrap">
+    <video id="video" muted playsinline preload="auto" aria-label="Video of the current song"></video>
+    <button type="button" class="video-toggle" id="video-toggle" aria-label="Play or pause">
+      <span class="big-play" aria-hidden="true">
+        <svg viewBox="0 0 24 24" width="34" height="34" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+      </span>
+    </button>
+  </div>
+
+  <article class="card info-card">
+    <p class="eyebrow">Now playing</p>
+    <h2 class="song-name" id="info-title">-</h2>
+    <dl class="info-grid">
+      <div><dt>Singer</dt><dd id="info-singer">-</dd></div>
+      <div><dt>Author</dt><dd id="info-author">-</dd></div>
+      <div><dt>Movie</dt><dd id="info-movie">-</dd></div>
+      <div><dt>Genre</dt><dd id="info-genre">-</dd></div>
+      <div><dt>Year</dt><dd id="info-year">-</dd></div>
+    </dl>
+  </article>
+</section>

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Contacts</title>
+
+    <style>
+        #head{
+            text-align:center;
+            color:blueviolet;
+        }
+
+        .name{
+            color:white;
+            background-color: blue;
+            font-size: 2em;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            cursor:pointer;
+            display:block;
+            position:relative;
+            margin:10px 0;
+        }
+        .tooltip{
+            visibility:hidden;
+            position:absolute;
+            background:black;
+            color:white;
+            padding:5px 10px;
+            border-radius:5px;
+            top:-45px;
+            left:0;
+            white-space:nowrap;
+        }
+
+        .name:hover .tooltip{
+            visibility:visible;
+        }
+
+        .details{
+            display:none;
+            background-color: grey;
+            border:1px solid #ccc;
+            padding:10px;
+            margin:10px 0;
+            border-radius: 20px;
+            width:300px;
+        }
+    </style>
+</head>
+<body>
+
+<h1 id="head">My Contacts</h1>
+
+{% for i in phone %}
+
+    <div class="name" onclick="showDetails('{{ i.id }}')">
+
+        {{ i.name }}
+
+        <div class="tooltip">
+            Name: {{ i.name }} <br>
+            Phone: {{ i.phone_number }}
+        </div>
+
+    </div>
+
+    <div class="details" id="contact{{ i.id }}">
+        <p><b>Name:</b> {{ i.name }}</p>
+        <p><b>Company:</b> {{ i.company }}</p>
+        <p><b>Phone:</b> {{ i.phone_number }}</p>
+        <p><b>Email:</b> {{ i.email }}</p>
+        <p><b>Address:</b> {{ i.address }}</p>
+        <p><b>DOB:</b> {{ i.dob }}</p>
+    </div>
+
+{% endfor %}
+
+<script>
+    function showDetails(id){
+        let detail = document.getElementById("contact" + id);
+
+        if(detail.style.display === "block"){
+            detail.style.display = "none";
+        }else{
+            detail.style.display = "block";
+        }
+    }
+</script>
+
+</body>
+</html>

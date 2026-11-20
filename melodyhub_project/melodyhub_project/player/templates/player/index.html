@@ -1,0 +1,42 @@
+{% load static %}<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#0d0a1a">
+  <title>MelodyHub - Music Player</title>
+  <link rel="icon" type="image/svg+xml" href="{% static 'images/logo.svg' %}">
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+  <a class="skip-link" href="#container-section">Skip to player</a>
+
+  {# 1. navbar.html #}
+  {% include "player/components/navbar.html" %}
+
+  <main class="page" id="home">
+    {# 2. favourite_section.html #}
+    {% include "player/components/favourite_section.html" %}
+
+    {# 3. container.html #}
+    {% include "player/components/container.html" %}
+
+    {# 4. video.html #}
+    {% include "player/components/video.html" %}
+  </main>
+
+  {# 5. footer.html #}
+  {% include "player/components/footer.html" %}
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  {# the real audio player (hidden) - controlled from the footer #}
+  <audio id="audio" preload="metadata"></audio>
+
+  {# song data from Django (player/songs.py) handed to JavaScript #}
+  {{ songs|json_script:"songs-data" }}
+  {{ default_favourites|json_script:"default-favs" }}
+
+  <script src="{% static 'js/app.js' %}"></script>
+</body>
+</html>

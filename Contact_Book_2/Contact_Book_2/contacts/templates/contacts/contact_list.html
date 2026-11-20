@@ -1,0 +1,23 @@
+{% extends 'contacts/base.html' %}
+{% block title %}Contact List | Contact Book 2.0{% endblock %}
+{% block content %}
+<div class="d-flex flex-column flex-md-row align-items-md-center justify-content-between gap-3 mb-4">
+  <div><p class="eyebrow mb-1">YOUR CONNECTIONS</p><h1 class="page-title mb-1">Contact List</h1><p class="text-secondary mb-0">All your important people, organized in one place.</p></div>
+  <a class="btn btn-primary btn-lg" href="{% url 'contact_create' %}">＋ Add Contact</a>
+</div>
+<form method="get" class="search-wrap mb-4"><input class="form-control" type="search" name="q" value="{{ query }}" placeholder="Search by name, phone or company"><button class="btn btn-dark">Search</button>{% if query %}<a class="btn btn-outline-secondary" href="{% url 'contact_list' %}">Clear</a>{% endif %}</form>
+<div class="d-flex justify-content-between align-items-center mb-3"><span class="text-secondary small">{{ contacts|length }} contact{{ contacts|length|pluralize }}</span></div>
+<div class="row g-3">
+{% for contact in contacts %}
+  <div class="col-12 col-md-6 col-xl-4">
+    <a class="contact-card flag-{{ contact.flag }}" href="{% url 'contact_detail' contact.pk %}">
+      <div class="avatar">{{ contact.first_name|first|upper }}</div>
+      <div class="min-w-0"><h5 class="mb-1 text-truncate">{{ contact.full_name }}</h5><p class="mb-2 contact-phone">{{ contact.phone }}</p><span class="category-pill">{{ contact.get_flag_display }}</span></div>
+      <span class="card-arrow">↗</span>
+    </a>
+  </div>
+{% empty %}
+  <div class="col-12"><div class="empty-state"><div class="empty-icon">♧</div><h4>No contacts yet</h4><p class="text-secondary">Add your first contact to get started.</p><a class="btn btn-primary" href="{% url 'contact_create' %}">Add your first contact</a></div></div>
+{% endfor %}
+</div>
+{% endblock %}

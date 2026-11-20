@@ -1,0 +1,46 @@
+{% extends 'main.html' %}
+{% block bg_video %}
+    {% include 'bg_video.html' with video='santoor.mp4' %}
+{% endblock %}
+{% block content %}
+{%load static%}
+<section class="hero">
+  <div class="hero-text">
+    <h1>Glow Naturally with Santoor</h1>
+    <p>Enriched with Sandalwood & Turmeric for youthful, radiant skin.</p>
+    <a href="#products" class="cta-btn">Discover Products</a>
+  </div>
+  <div class="hero-img">
+    <img src="{% static 'images/santoor.jpg' %}" alt="Santoor Soap">
+  </div>
+</section>
+
+<section id="about" class="about">
+  <h2>About Santoor</h2>
+  <p>Santoor is trusted by millions for its natural ingredients. 
+     It combines the goodness of sandalwood and turmeric to keep skin smooth and glowing.</p>
+</section>
+
+<section id="benefits" class="benefits">
+  <h2>Why Choose Santoor?</h2>
+  <ul>
+    <li>🌿 Natural Ingredients: Gentle cleansing with herbal care.</li>
+    <li>✨ Youthful Glow: Helps reduce dullness and enhances radiance.</li>
+    <li>💰 Affordable Luxury: Quality skincare at a price everyone can enjoy.</li>
+  </ul>
+</section>
+
+<section id="products" class="products">
+  <h2>Our Products</h2>
+  <div class="product-card">Santoor Sandal & Turmeric Soap</div>
+  <div class="product-card">Santoor Body Lotion</div>
+  <div class="product-card">Santoor Hand Wash</div>
+</section>
+
+<section class="testimonials">
+  <h2>What People Say</h2>
+  <blockquote>"Santoor makes my skin feel fresh and soft every day."</blockquote>
+  <blockquote>"Affordable, natural, and effective — my family’s favorite soap."</blockquote>
+</section>
+
+{% endblock content %}
